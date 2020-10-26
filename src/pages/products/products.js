@@ -54,7 +54,7 @@ const ProductsPage = () => {
                     className="deleteBtn divDelete"
                     value="Удалить"
                     onClick={(event) => {
-                      deleteData(`products/${product.id}/`);
+                      deleteData(`products/?productId=${product.id}`, product.id);
                       event.target.parentNode.remove();
                     }}
                   />

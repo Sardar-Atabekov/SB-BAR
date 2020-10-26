@@ -33,12 +33,12 @@ const AddUserPage = (props) => {
     });
 
     // data.role = 5;
-    postData("user/create/", data)
+    postData("products/", data)
       .then((response) => {
         console.log("response", response);
-        if (response.Message === "Пользователь успешно создан") {
-          Alert("Пользователь добавлен");
-          setTimeout(() => props.history.push(`/users/`), 1000);
+        if (response.id) {
+          Alert("Продукт добавлен");
+          setTimeout(() => props.history.push(`/products/`), 1000);
         } else {
           Alert(response.Message, "error");
         }
@@ -65,12 +65,12 @@ const AddUserPage = (props) => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="department">Категория</label>
+            <label htmlFor="categoryId">Категория</label>
             <br />
             <select
-              id="department"
+              id="categoryId"
               className="select form-control"
-              name="department"
+              name="categoryId"
               defaultValue=""
               required
             >
