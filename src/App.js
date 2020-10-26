@@ -25,6 +25,7 @@ import ForgetPasswordPage from "./pages/forget-password/forget-password";
 import EditDepartmentPage from "./pages/edit-department/edit-department";
 import ProductsPage from "./pages/products/products";
 import CategoryPage from "./pages/category/category";
+import OrdersPage from "./pages/orders-page/order";
 function App() {
   return (
     <BrowserRouter>
@@ -34,6 +35,7 @@ function App() {
           <Switch>
             <Route path="/" exact component={LoginPage} />
             <Route path="/users/" exact component={UsersPage} />
+            <Route path="/orders/" exact component={OrdersPage} />
             <Route path="/user/:id/" exact component={UserPage} />
             <Route path="/news/:page" exact component={NewsPage} />
             <Route path="/products/" exact component={ProductsPage} />

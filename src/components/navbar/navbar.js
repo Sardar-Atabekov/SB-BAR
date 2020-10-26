@@ -36,9 +36,9 @@ const NavBar = () => {
       <Link to={"/users/"} className="categories">
         Пользователи
       </Link>
-      {/* <Link to={"/departments/"} className="categories">
-        Департаменты
-      </Link> */}
+      <Link to={"/orders/"} className="categories">
+        Заказы
+      </Link>
       <div className="categories" onClick={confirmMessage}>
         Выйти
       </div>
