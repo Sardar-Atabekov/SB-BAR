@@ -69,7 +69,7 @@ function confirmAlert(title) {
 //     }
 //   );
 // };
-const deleteAlert = (title, subTitle, url, toUrl, props) => {
+const deleteAlert = (title, subTitle, url, toUrl, props, data='') => {
   Swal.fire({
     title: title,
     icon: "warning",
@@ -80,7 +80,7 @@ const deleteAlert = (title, subTitle, url, toUrl, props) => {
     confirmButtonText: "Удалить",
   }).then((result) => {
     if (result.value) {
-      deleteData(url).then((res) => {
+      deleteData(url, data).then((res) => {
         if (res.ok) {
           Alert(subTitle);
           console.log("props", props);

@@ -3,7 +3,7 @@ import Title from "../../components/title/title";
 import Loading from "../../components/loading/loading";
 import Alert, { confirmAlert } from "../../functions/alert";
 import { getData, postFilesData, putData } from "../../functions/requests";
-
+import DeleteBtn from "./../../components/buttons/deleteBtn";
 const AddUserPage = (props) => {
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState([]);
@@ -65,7 +65,7 @@ const AddUserPage = (props) => {
       console.log("response", response);
       if (response.imgUrl) {
         setImgUrl(response.imgUrl);
-        Alert('Фото добавлено');
+        Alert("Фото добавлено");
       } else {
         Alert(response, "error");
       }
@@ -153,10 +153,20 @@ const AddUserPage = (props) => {
               <span>Загрузить картинку</span>
             </label>
           </div>
+          <div className="text-left w-50">
+            <DeleteBtn
+              title={`Вы уверены что хотите удалить продукта ${userData.title}?`}
+              subTitle="Пользователь удален"
+              url={`products/?productId=${userData.id}/`}
+              data={userData.id}
+              toUrl={"/products/"}
+              props={props}
+            />
+          </div>
           <div className="text-right">
             <input
               type="submit"
-              className="btn add-btn w-50 mt-5"
+              className="btn add-btn w-50 mt-1"
               value="Сохранить"
             />
           </div>
