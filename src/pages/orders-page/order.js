@@ -33,31 +33,44 @@ const UsersPage = () => {
           <thead>
             <tr>
               <th className={"thead-item"}>
-                <span>Ф. И. О.</span>{" "}
+                <span>Имя клиента</span>{" "}
               </th>
               <th className={"thead-item"}>
-                <span>Логин </span>
+                <span>Номер клиента</span>
               </th>
               <th className={"thead-item "}>
-                <span>Email </span>
+                <span>Адресс </span>
               </th>
+              <th className={"thead-item "}>
+                <span>Товары </span>
+              </th>
+              {/* <th className={"thead-item "}>
+                <span>кл </span>
+              </th> */}
             </tr>
           </thead>
-          {/* <tbody className={"tbody"}>
+          <tbody className={"tbody"}>
             {users.length > 0 ? (
               users.map((user) => (
                 <tr key={user.id}>
                   <td data-th="Ф.И.О" className={"tbody-item table-Username"}>
-                    <Link to={`/user/${user.id}/`}>
-                      {user.firstName ? user.firstName : user.email}{" "}
-                      {user.lastName}
-                    </Link>
+                    {user.clientName}
                   </td>
                   <td data-th="Категория" className={"tbody-item"}>
-                    {user.login}
+                    {user.clientPhone}
                   </td>
                   <td data-th="Номер телефона" className={"tbody-item"}>
-                    {user.email}
+                    {user.clientAddress}
+                  </td>
+                  <td data-th="Номер телефона" className={"tbody-item"}>
+                    {user.products.map((item) => (
+                      <>
+                        <span>
+                          {item.title} x{item.quantity}
+                        </span>
+                        <br />
+                      </>
+                    ))}
                   </td>
                 </tr>
               ))
@@ -66,7 +79,7 @@ const UsersPage = () => {
                 <td colSpan="9">{users.error}</td>
               </tr>
             )}
-          </tbody> */}
+          </tbody>
         </Table>
       ) : (
         <Loading />
