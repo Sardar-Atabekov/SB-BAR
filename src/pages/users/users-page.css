@@ -1,0 +1,62 @@
+.active-status,
+.noActive-status {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+}
+
+.noActive-status {
+    background: #E40E00;
+}
+
+.filter-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filters-iconBlock {
+    display: flex;
+    align-items: center;
+    height: 100% !important; 
+    justify-content: space-between;
+}
+
+.filters-iconBlock img {
+    cursor: pointer;
+}
+
+.filter-select {
+    height: 100%;
+    width: 100%;
+    color: black;
+    height: 72px;
+    font-family: "Montserrat-bold";
+    background: var(--mainColor);
+    border-right: 1px solid #E8E8E8;
+    border-left: 1px solid #E8E8E8;
+    border-bottom: none !important;
+    border-top: none !important;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px;
+    /* background-image: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png);
+    background-repeat:  no-repeat;
+    background-position: right;
+    right: 10px;
+    -webkit-appearance: none; */
+    /* background-position-x: 70px; */
+}
+
+
+.filter-select:focus {
+    outline-offset: inherit;
+    outline: none;
+}
+
+.filter-img {
+    margin-left: 10px;
+}
+
+.no-filter-Data {
+    text-align: center;
+}

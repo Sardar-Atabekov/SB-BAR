@@ -1,0 +1,50 @@
+.add-department {
+    width: 30%;
+    margin-top: 20px;
+    font-family: 'Montserrat-Medium';
+}
+
+.add-department .name {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+.new-department-title-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.download-images {
+    display: flex;
+}
+.download-images div {
+    margin-right: 100px;
+    text-align: center;
+}
+
+.download-img {
+    width: 200px;
+    margin: 20px;
+    margin-top: 0px;
+    height: 200px;
+}
+
+.download-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 289px;
+    padding: 8px;
+}
+
+.new-department-title {
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    text-transform: uppercase;
+}

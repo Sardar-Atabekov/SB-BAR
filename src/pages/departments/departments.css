@@ -1,0 +1,58 @@
+.department {
+    display: flex;
+    border-radius: 10px;
+    background: #115EF8;
+    max-height: 215px;
+    width: 380px;
+    padding: 15px;
+    color: #fff;
+    margin-bottom: 3px;
+    font-family: 'Montserrat-medium';
+    /* background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; */
+}
+
+.department:hover {
+    color: #FFF;
+}
+
+.bgDepartment {
+    width: 140px;
+    margin: 5px 0;
+    max-height: 170px;
+
+}
+
+.counts-department {
+    margin-top: 5px;
+}
+
+.department-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-block {
+    width: 40px;
+    padding: 5px;
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    background: #FFFFFF;
+    justify-content: center;
+}
+
+.icon-block img {
+    width: 30px;
+    height: 30px;
+    color: #000;
+}
+
+.people-count {
+    margin-top: auto;
+}
+
+.mentor_count {
+    margin-right: 10px;
+}

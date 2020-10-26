@@ -1,0 +1,82 @@
+.department-name {
+    font-size: 28px;
+    margin-top: 15px;
+    font-weight: 600;
+    line-height: 34px;
+    text-transform: uppercase;
+    font-family: 'Montserrat-Bold';
+}
+
+.department-users {
+    border-top: 1px solid rgba(196, 196, 196, 0.34);
+    margin-top: 30px;
+    padding-top: 20px;
+}
+
+.list-users {
+    font-family: 'Montserrat-medium';
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+    margin-bottom: 30px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.head-block {
+    margin-right: 120px;
+    display: flex;
+    flex-direction: column;
+}
+
+.head-name {
+    font-family: 'Montserrat-Bold';
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    margin-top: 5px;
+}
+
+.department-block {
+    display: flex;
+    padding: 20px 30px;
+    border-radius: 10px;
+    /* color: #fff !important; */
+    /* background: rgb(7, 183, 85); */
+    justify-content: space-between;
+}
+
+.counts span {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    /* color: #fff !important; */
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.department-background img {
+    height: 200px;
+    margin-right: 100px;
+}
+
+.department-block .icon-block {
+    background: rgba(7, 183, 85, 0.1);
+    width: 50px;
+}
+
+.department-block .icon-block img {
+    width: 40px;
+    height: 40px;
+}
+
+.department-users .filters-iconBlock {
+    justify-content: space-between;
+}
+
+.counts {
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: 600;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.8);
+    font-family: 'Montserrat-Bold';
+}
