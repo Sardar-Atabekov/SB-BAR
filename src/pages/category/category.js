@@ -11,9 +11,7 @@ import "./category.css";
 const ProductsPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  // finished_projects_count;
-  const userRights = JSON.parse(localStorage.getItem("neobisHUBDate"));
+  const [getNewData, setGetNewData] = useState(false);
 
   useEffect(() => {
     setLoading(false);
@@ -28,7 +26,7 @@ const ProductsPage = () => {
       setData(res);
       setLoading(true);
     });
-  }, []);
+  }, [getNewData]);
 
   const AddCategory = (event) => {
     event.preventDefault();
@@ -40,8 +38,13 @@ const ProductsPage = () => {
     });
 
     data.position = 1;
-    postData("category/", data);
+    postData("category/", data).then((res) => {
+      if (res.id) {
+        setGetNewData(!getNewData);
+      }
+    });
     event.target.reset();
+
   };
 
   const changeCategory = (event, id) => {
@@ -50,7 +53,7 @@ const ProductsPage = () => {
       position: 1,
     };
     console.log(data);
-    putData(`category/${id}/`, data);
+    putData(`category/?categoryId=${id}`, data);
   };
 
   console.log("users", data);
@@ -59,7 +62,7 @@ const ProductsPage = () => {
       {loading ? (
         <main className="departments">
           <form onSubmit={AddCategory} className="addDepartments">
-            <input type="text" name="name" className="add" />
+            <input type="text" name="title" className="add" />
             <button className="changeBtn">Добавить</button>
           </form>
           <div className="listItem">
@@ -83,7 +86,10 @@ const ProductsPage = () => {
                     className="deleteBtn divDelete"
                     value="Удалить"
                     onClick={(event) => {
-                      deleteData(`category/${category.id}/`);
+                      deleteData(
+                        `category/?categoryId=${category.id}`,
+                        category.id
+                      );
                       event.target.parentNode.remove();
                     }}
                   />

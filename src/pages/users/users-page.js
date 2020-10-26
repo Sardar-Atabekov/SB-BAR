@@ -16,7 +16,6 @@ const UsersPage = () => {
   const [loading, setLoading] = useState(false);
 
   // finished_projects_count;
-  const userRights = JSON.parse(localStorage.getItem("neobisHUBDate"));
 
   useEffect(() => {
     setLoading(false);
@@ -29,14 +28,13 @@ const UsersPage = () => {
   console.log("users", users);
   return (
     <div className="wrapper">
-   
-          {
-            // // ${department !== "false" ? `department=${department}` : ""}${
-      //   role !== "false" ? `&&status=${role}` : ""
-      // }${status !== "false" ? `&&user__is_active=${status}` : ""}${
-      //   searchText && `&&search=${searchText}`
-      // }&&page_size=9
-          }
+      {
+        // // ${department !== "false" ? `department=${department}` : ""}${
+        //   role !== "false" ? `&&status=${role}` : ""
+        // }${status !== "false" ? `&&user__is_active=${status}` : ""}${
+        //   searchText && `&&search=${searchText}`
+        // }&&page_size=9
+      }
       {loading ? (
         <Table striped className={"mb-5 table-3 tables"}>
           <thead>
@@ -45,16 +43,11 @@ const UsersPage = () => {
                 <span>Ф. И. О.</span>{" "}
               </th>
               <th className={"thead-item"}>
-                <span>Департамент </span>
+                <span>Категория </span>
               </th>
               <th className={"thead-item "}>
                 <span>Номер телефона </span>
               </th>
-            {userRights.add_project ? (
-                <th className={"thead-item "}>
-                  <span>Статус</span>
-                </th>
-              ) : null}
             </tr>
           </thead>
           <tbody className={"tbody"}>
@@ -62,13 +55,7 @@ const UsersPage = () => {
               users.map((user) => (
                 <tr key={user.id}>
                   <td data-th="Ф.И.О" className={"tbody-item table-Username"}>
-                    <Link
-                      to={
-                        userRights.user_id === user.id
-                          ? `/personal/${user.id}/`
-                          : `/user/${user.id}/`
-                      }
-                    >
+                    <Link to={`/user/${user.id}/`}>
                       {user.name ? user.name : user.email} {user.surname}
                     </Link>
                   </td>
@@ -78,14 +65,6 @@ const UsersPage = () => {
                   <td data-th="Номер телефона" className={"tbody-item"}>
                     {user.phone}
                   </td>
-                  {userRights.add_project ? (
-                    <td data-th="Статус" className={"tbody-item"}>
-                      <img
-                        src={user.is_active ? activeIcon : noActiveIcon}
-                        alt="user status"
-                      />
-                    </td>
-                  ) : null}
                 </tr>
               ))
             ) : (

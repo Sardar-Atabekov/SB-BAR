@@ -16,12 +16,13 @@ const LoginPage = (props) => {
       data[key] = value;
     });
     console.log(data);
-    postDataNoToken("user/login/", data)
+   
+    postDataNoToken("auth/login/", data)
       .then((response) => {
         console.log(response);
         if (response.token) {
-          localStorage.setItem("neobisHUBDate", JSON.stringify(response));
-          setTimeout(() => (window.location.href = `/news/1/`), 500);
+          localStorage.setItem("token", JSON.stringify(response));
+          setTimeout(() => (window.location.href = `/products/`), 500);
         } else {
           setError(true);
         }
@@ -29,8 +30,8 @@ const LoginPage = (props) => {
       .catch(() => setError(true));
   };
 
-  if (localStorage.getItem("neobisHUBDate")) {
-    props.history.push(`/news/1/`);
+  if (localStorage.getItem("token")) {
+    props.history.push(`/products/`);
   }
   return (
     <div className="loginWrapper">
