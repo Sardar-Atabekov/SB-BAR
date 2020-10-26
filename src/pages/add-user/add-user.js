@@ -7,18 +7,8 @@ import { getData, postData } from "../../functions/requests";
 import "./add-user.css";
 
 const AddUserPage = (props) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [departments, setDepartments] = useState([]);
-  useEffect(() => {
-    getData("department/")
-      .then((res) => {
-        setDepartments(res);
-        setLoading(true);
-      })
-      .catch(() =>
-        confirmAlert("Ошибка сервера. Напишите нам, мы всё починим.")
-      );
-  }, []);
 
   const postUserData = (e) => {
     e.preventDefault();
@@ -37,7 +27,7 @@ const AddUserPage = (props) => {
           Alert("Пользователь добавлен");
           setTimeout(() => props.history.push(`/users/`), 1000);
         } else {
-          Alert(response.Message, 'error');
+          Alert(response.Message, "error");
         }
       })
       .catch(() =>
@@ -61,43 +51,24 @@ const AddUserPage = (props) => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="department">Департамент</label>
-            <br />
-            <select
-              id="department"
-              className="select form-control"
-              name="department"
-              defaultValue=""
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              className="form-control"
+              id="email"
               required
-            >
-              <option value="" disabled>
-                Выберите департамента
-              </option>
-              {departments.map((department) => (
-                <option key={department.id} value={department.id}>
-                  {department.name}
-                </option>
-              ))}
-            </select>
-          </div>
+            />
+          </div>{" "}
           <div className="form-group">
-            <label htmlFor="status">Роль</label>
-            <br />
-            <select id="status" className="select form-control" name="status">
-              <option value="h">Мембер</option>
-              <option value="m">Ментор</option>
-              <option value="t">Тимлид</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="role">Права</label>
-            <br />
-            <select id="role" className="select form-control" name="role" defaultValue="4">
-              <option value="1">Менеджер клуба</option>
-              <option value="2">Координатор проектов</option>
-              <option value="3">Тимлид</option>
-              <option value="4">Обычный пользователь</option>
-            </select>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              className="form-control"
+              id="email"
+              required
+            />
           </div>
           <div className="text-right">
             <input

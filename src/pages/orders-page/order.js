@@ -3,7 +3,6 @@ import { getData } from "../../functions/requests";
 import Loading from "./../../components/loading/loading";
 import { Link } from "react-router-dom";
 import { Table } from "reactstrap";
-import "./users-page.css";
 
 const UsersPage = () => {
   const [users, setUsersData] = useState([]);
@@ -13,7 +12,7 @@ const UsersPage = () => {
 
   useEffect(() => {
     setLoading(false);
-    getData(`users/`).then((res) => {
+    getData(`orders/`).then((res) => {
       setUsersData(res.content);
       setLoading(true);
     });
@@ -29,11 +28,6 @@ const UsersPage = () => {
         //   searchText && `&&search=${searchText}`
         // }&&page_size=9
       }
-      <div className="mt-5 mb-5 text-right">
-        <Link to={`/add-user/`} className="add-btn">
-          Создать
-        </Link>
-      </div>
       {loading ? (
         <Table striped className={"mb-5 table-3 tables"}>
           <thead>
@@ -49,7 +43,7 @@ const UsersPage = () => {
               </th>
             </tr>
           </thead>
-          <tbody className={"tbody"}>
+          {/* <tbody className={"tbody"}>
             {users.length > 0 ? (
               users.map((user) => (
                 <tr key={user.id}>
@@ -72,7 +66,7 @@ const UsersPage = () => {
                 <td colSpan="9">{users.error}</td>
               </tr>
             )}
-          </tbody>
+          </tbody> */}
         </Table>
       ) : (
         <Loading />
