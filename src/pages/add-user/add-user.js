@@ -23,7 +23,7 @@ const AddUserPage = (props) => {
     postData("users/create/", data)
       .then((response) => {
         console.log("response", response);
-        if (response.Message === "Пользователь успешно создан") {
+        if (response.name) {
           Alert("Пользователь добавлен");
           setTimeout(() => props.history.push(`/users/`), 1000);
         } else {
