@@ -20,7 +20,7 @@ const AddUserPage = (props) => {
     });
 
     // data.role = 5;
-    postData("user/create/", data)
+    postData("users/create/", data)
       .then((response) => {
         console.log("response", response);
         if (response.Message === "Пользователь успешно создан") {
@@ -51,22 +51,20 @@ const AddUserPage = (props) => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="name">Имя</label>
             <input
-              type="email"
-              name="email"
+              name="name"
               className="form-control"
-              id="email"
+              id="name"
               required
             />
           </div>{" "}
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="phone">Телефон</label>
             <input
-              type="email"
-              name="email"
+              name="phone"
               className="form-control"
-              id="email"
+              id="phone"
               required
             />
           </div>
