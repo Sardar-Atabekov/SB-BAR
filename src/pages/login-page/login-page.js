@@ -37,6 +37,7 @@ const LoginPage = (props) => {
     <div className="loginWrapper">
       <div className="d-flex">
         <div className="login w-50 text-left">
+          <h1 className="welcome">Welcome!</h1>
           <h3 className="sing-in">Войдите в аккаунт</h3>
           <Form className="loginForm" onSubmit={postUserData}>
             <FormGroup>
@@ -67,6 +68,8 @@ const LoginPage = (props) => {
               Войти
             </Button>
           </Form>
+        </div>
+        <div className="loginImg w-50">
         </div>
       </div>
     </div>

@@ -54,7 +54,7 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 120%;
-    color: black !important;
+    color: var(--mainColor) !important;
 }
 
 .errorMessage {
@@ -80,10 +80,14 @@
     }
 }
 
+.sing-in {
+    color: var(--mainColor);
+    /* text-align: cen; */
+}
 
 
 .loginImg {
-    background-image: url("./../../assets/img/login.svg");
+    background: var(--mainColor);
     height: 100vh;
     display: flex;
     justify-content: center;
