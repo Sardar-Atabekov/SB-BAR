@@ -60,9 +60,6 @@ const LoginPage = (props) => {
             {error ? (
               <div className="errorMessage">Неправильный email или пароль</div>
             ) : null}
-            <div className="text-right forget-block mt-2">
-              <Link to={"/forget-password/"}>Забыли пароль?</Link>
-            </div>
             <Button className="loginInput loginBtn button add-btn">
               Войти
             </Button>
