@@ -54,7 +54,7 @@ const UsersPage = () => {
               users.map((user) => (
                 <tr key={user.id}>
                   <td data-th="Ф.И.О" className={"tbody-item table-Username"}>
-                    <Link to={`/user/${user.id}/`}>
+                    <Link to={`/edit-user/${user.id}/`}>
                       {user.firstName ? user.firstName : user.email}{" "}
                       {user.lastName}
                     </Link>

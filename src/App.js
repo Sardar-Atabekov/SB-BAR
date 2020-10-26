@@ -23,6 +23,7 @@ import AddDepartmentPage from "./pages/add-department/add-department";
 import ChangePasswordPage from "./pages/change-password/change-password";
 import ForgetPasswordPage from "./pages/forget-password/forget-password";
 import EditDepartmentPage from "./pages/edit-department/edit-department";
+import ProductEditPage from "./pages/product-edit/product-edit";
 import ProductsPage from "./pages/products/products";
 import CategoryPage from "./pages/category/category";
 import OrdersPage from "./pages/orders-page/order";
@@ -37,6 +38,7 @@ function App() {
             <Route path="/users/" exact component={UsersPage} />
             <Route path="/orders/" exact component={OrdersPage} />
             <Route path="/user/:id/" exact component={UserPage} />
+            <Route path="/product-edit/:id/" exact component={ProductEditPage} />
             <Route path="/news/:page" exact component={NewsPage} />
             <Route path="/products/" exact component={ProductsPage} />
             <Route path="/category/" exact component={CategoryPage} />
