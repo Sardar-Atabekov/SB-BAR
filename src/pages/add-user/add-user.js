@@ -8,7 +8,6 @@ import "./add-user.css";
 
 const AddUserPage = (props) => {
   const [loading, setLoading] = useState(true);
-  const [departments, setDepartments] = useState([]);
 
   const postUserData = (e) => {
     e.preventDefault();
@@ -52,21 +51,11 @@ const AddUserPage = (props) => {
           </div>
           <div className="form-group">
             <label htmlFor="name">Имя</label>
-            <input
-              name="name"
-              className="form-control"
-              id="name"
-              required
-            />
-          </div>{" "}
+            <input name="name" className="form-control" id="name" required />
+          </div>
           <div className="form-group">
             <label htmlFor="phone">Телефон</label>
-            <input
-              name="phone"
-              className="form-control"
-              id="phone"
-              required
-            />
+            <input name="phone" className="form-control" id="phone" required />
           </div>
           <div className="text-right">
             <input

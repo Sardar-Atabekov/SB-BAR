@@ -12,7 +12,7 @@ const UsersPage = () => {
 
   useEffect(() => {
     setLoading(false);
-    getData(`orders/`).then((res) => {
+    getData(`orders`).then((res) => {
       setUsersData(res.content);
       setLoading(true);
     });

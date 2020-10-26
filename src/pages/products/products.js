@@ -34,7 +34,43 @@ const ProductsPage = () => {
       </div>
       {loading ? (
         <>
-          <div className="listItem">
+          <Table striped className={"mb-5 table-3 tables mt-5"}>
+            <thead>
+              <tr>
+                <th className={"thead-item"}>
+                  <span>Имя</span>{" "}
+                </th>
+                <th className={"thead-item"}>
+                  <span>Старая цена </span>
+                </th>
+                <th className={"thead-item"}>
+                  <span>Текущая цена </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody className={"tbody"}>
+              {data.length > 0 ? (
+                data.map((user) => (
+                  <tr key={user.id}>
+                    <td data-th="Ф.И.О" className={"tbody-item table-Username"}>
+                      <Link to={`/product-edit/${user.id}/`}>{user.title}</Link>
+                    </td>
+                    <td data-th="Категория" className={"tbody-item"}>
+                      {user.oldPrice}
+                    </td>
+                    <td data-th="Номер телефона" className={"tbody-item"}>
+                      {user.price}
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr className="no-filter-Data">
+                  <td colSpan="9">{data.error}</td>
+                </tr>
+              )}
+            </tbody>
+          </Table>
+          {/* <div className="listItem">
             {data &&
               data.map((product) => (
                 <div className="item" key={product.id}>
@@ -54,13 +90,16 @@ const ProductsPage = () => {
                     className="deleteBtn divDelete"
                     value="Удалить"
                     onClick={(event) => {
-                      deleteData(`products/?productId=${product.id}`, product.id);
+                      deleteData(
+                        `products/?productId=${product.id}`,
+                        product.id
+                      );
                       event.target.parentNode.remove();
                     }}
                   />
                 </div>
               ))}
-          </div>{" "}
+          </div>{" "} */}
         </>
       ) : (
         <Loading />

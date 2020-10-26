@@ -17,10 +17,10 @@ const headers = {
 const headersFiles = {
   "Content-Type":
     "multipart/form-data; boundary=----WebKitFormBoundaryAnh7fEGNrsvVU7yB",
-  Authorization: "Token " + token,
+  Authorization: "Bearer " + token,
 };
 const tokenHeader = {
-  Authorization: "Token " + token,
+  Authorization: "Bearer " + token,
 };
 async function getData(url) {
   let response = await fetch(`${API}/${url}`, {
