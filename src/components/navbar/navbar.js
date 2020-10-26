@@ -19,13 +19,12 @@ const NavBar = () => {
       confirmButtonText: "Да, выйти",
     }).then((result) => {
       if (result.value) {
-        localStorage.removeItem("neobisHUBDate");
+        localStorage.removeItem("token");
         window.location.href = "/";
       }
     });
   };
 
-  let id = JSON.parse(localStorage.getItem("neobisHUBDate")).user_id;
   return (
     <nav className="navigationComponent text-left">
       <Link to={"/products/"} className="categories">

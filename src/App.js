@@ -30,7 +30,7 @@ function App() {
     <BrowserRouter>
       <React.Fragment>
         <div className="app-wrapper">
-          {localStorage.getItem("neobisHUBDate") ? <NavBar /> : null}
+          {localStorage.getItem("token") ? <NavBar /> : null}
           <Switch>
             <Route path="/" exact component={LoginPage} />
             <Route path="/users/" exact component={UsersPage} />

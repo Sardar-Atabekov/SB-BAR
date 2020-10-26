@@ -16,12 +16,13 @@ const LoginPage = (props) => {
       data[key] = value;
     });
     console.log(data);
-    postDataNoToken("user/login/", data)
+   
+    postDataNoToken("auth/login/", data)
       .then((response) => {
         console.log(response);
         if (response.token) {
-          localStorage.setItem("neobisHUBDate", JSON.stringify(response));
-          setTimeout(() => (window.location.href = `/news/1/`), 500);
+          localStorage.setItem("token", JSON.stringify(response));
+          setTimeout(() => (window.location.href = `/products/`), 500);
         } else {
           setError(true);
         }
@@ -29,15 +30,13 @@ const LoginPage = (props) => {
       .catch(() => setError(true));
   };
 
-  if (localStorage.getItem("neobisHUBDate")) {
-    props.history.push(`/news/1/`);
+  if (localStorage.getItem("token")) {
+    props.history.push(`/products/`);
   }
   return (
     <div className="loginWrapper">
       <div className="d-flex">
         <div className="login w-50 text-left">
-          <img src={neobisLogo} alt="neobis logo" />
-          <h1 className="welcome">Welcome!</h1>
           <h3 className="sing-in">Войдите в аккаунт</h3>
           <Form className="loginForm" onSubmit={postUserData}>
             <FormGroup>
@@ -68,9 +67,6 @@ const LoginPage = (props) => {
               Войти
             </Button>
           </Form>
-        </div>
-        <div className="loginImg w-50">
-          <img src={LoginImg} alt="LoginImg" />
         </div>
       </div>
     </div>

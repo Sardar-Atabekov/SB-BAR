@@ -4,13 +4,13 @@ import axios from "axios";
 import { devAPI as API } from "./../constants/API";
 
 let token;
-if (localStorage.getItem("neobisHUBDate")) {
-  token = JSON.parse(localStorage.getItem("neobisHUBDate")).token;
+if (localStorage.getItem("token")) {
+  token = JSON.parse(localStorage.getItem("token")).token;
 }
 
 const headers = {
   Accept: "application/json",
-  Authorization: "Token " + token,
+  Authorization: "Bearer " + token,
   "Content-Type": "application/json",
 };
 
