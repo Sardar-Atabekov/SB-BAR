@@ -44,7 +44,7 @@ const AddUserPage = (props) => {
       data[key] = value;
     });
 
-    // data.role = 5;
+    data.position = 1;
     putData(`banner/?bannerId=${dataBanner[category].id}`, data)
       .then((response) => {
         console.log("response", response);

@@ -33,26 +33,26 @@ const NewsPage = (props) => {
   }, [page, searchText]);
 
   console.log("page", page);
-  const createPage = () => {
-    let buttons = [],
-      pages = Math.ceil(total / countArticle);
-    for (let i = 1; i <= pages; i++) {
-      buttons.push(
-        <Link
-          to={`/news/${i}/`}
-          key={i}
-          className={i === +page ? "btn pg-btn active-btn " : "btn pg-btn"}
-          onClick={() => {
-            setPage(i);
-            setLoading(false);
-          }}
-        >
-          {i}
-        </Link>
-      );
-    }
-    return buttons;
-  };
+  // const createPage = () => {
+  //   let buttons = [],
+  //     pages = Math.ceil(total / countArticle);
+  //   for (let i = 1; i <= pages; i++) {
+  //     buttons.push(
+  //       <Link
+  //         to={`/news/${i}/`}
+  //         key={i}
+  //         className={i === +page ? "btn pg-btn active-btn " : "btn pg-btn"}
+  //         onClick={() => {
+  //           setPage(i);
+  //           setLoading(false);
+  //         }}
+  //       >
+  //         {i}
+  //       </Link>
+  //     );
+  //   }
+  //   return buttons;
+  // };
 
   console.log("newsData", newsData, firstArticle);
   return (
