@@ -17,10 +17,14 @@ const AddUserPage = (props) => {
     setLoading(false);
     getData(`banner/${category}`)
       .then((res) => {
-        setLoading(true);
-        setDataBanner(res);
-        setImgUrl(res.img);
-        setBgImgDownload(res.img);
+        if (res.status != 500) {
+          setLoading(true);
+          setDataBanner(res);
+          setImgUrl(res.img);
+          setBgImgDownload(res.img);
+        } else {
+          confirmAlert("Ошибка сервера. Напишите нам, мы всё починим.");
+        }
       })
       .catch(() =>
         confirmAlert("Ошибка сервера. Напишите нам, мы всё починим.")
@@ -40,7 +44,7 @@ const AddUserPage = (props) => {
     data.position = 1;
     data.id = dataBanner.id;
     data.type = "about-us";
-    putData(`banner/?bannerId=${dataBanner.id}`, data)
+    putData(`banner/${dataBanner.id}`, data)
       .then((response) => {
         console.log("response", response);
         if (response.id) {
