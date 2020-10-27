@@ -37,6 +37,9 @@ const AddUserPage = (props) => {
     });
 
     // data.role = 5;
+    data.position = 1;
+    data.id = dataBanner.id;
+    data.type = "about-us";
     putData(`banner/?bannerId=${dataBanner.id}`, data)
       .then((response) => {
         console.log("response", response);

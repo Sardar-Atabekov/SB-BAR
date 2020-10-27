@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getData, deleteData } from "../../functions/requests";
 import Loading from "./../../components/loading/loading";
+import { Pagination } from "@material-ui/lab";
 
 import { Link } from "react-router-dom";
 import { Table } from "reactstrap";
@@ -9,6 +10,11 @@ const ProductsPage = () => {
   const [data, setData] = useState([]);
   const [dataCategory, setDataCategory] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [total, setTotal] = useState("");
+  const [page, setPage] = useState(0);
+  const [category, setCategory] = useState("false");
+
+  let countArticle = 20;
 
   useEffect(() => {
     setLoading(false);
@@ -16,23 +22,45 @@ const ProductsPage = () => {
       setDataCategory(res);
     });
     getData(
-      `products/`
+      `products/?page=${page}${
+        category !== "false" ? `&&categoryId=${category}` : ""
+      }`
       //   /?${department !== "false" ? `department=${department}` : ""}${
       //     role !== "false" ? `&&status=${role}` : ""
       //   }${status !== "false" ? `&&user__is_active=${status}` : ""}${
       //     searchText && `&&search=${searchText}`
       //   }&&page_size=9`
     ).then((res) => {
+      console.log(res);
       setData(res.content);
+      setTotal(res.totalElements);
       setLoading(true);
     });
-  }, []);
+  }, [page, category]);
 
   console.log("data", dataCategory);
   return (
     <div className="wrapper productsPage">
-      <div className="mt-5 mb-3 text-right">
-        <Link to={`/add-product/`} className="add-btn">
+      <div className="add-btn-block">
+        <div className="form-group mr-2 mb-0">
+          <select
+            className="form-control"
+            defaultValue={category}
+            onChange={(e) => {
+              setPage(0);
+              setCategory(e.target.value);
+            }}
+          >
+            <option value="false">Категории</option>
+            {dataCategory.map((item) => (
+              <option key={item.id} value={item.id}>
+                {item.title}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <Link to={`/add-project/`} className="add-btn">
           Создать
         </Link>
       </div>
@@ -79,11 +107,24 @@ const ProductsPage = () => {
                 ))
               ) : (
                 <tr className="no-filter-Data">
-                  <td colSpan="9">{data.error}</td>
+                  <td colSpan="9">Нет данных по этим параметрам</td>
                 </tr>
               )}
             </tbody>
           </Table>
+          {total > countArticle ? (
+            <div className="pagination-block">
+              {/* {createPage()} */}
+              <Pagination
+                count={Math.ceil(total / countArticle)}
+                page={page}
+                onChange={(e, number) => {
+                  setPage(number);
+                  setLoading(false);
+                }}
+              />
+            </div>
+          ) : null}
           {/* <div className="listItem">
             {data &&
               data.map((product) => (
