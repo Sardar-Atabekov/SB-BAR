@@ -8,8 +8,8 @@ import downloadIcon from "./../../assets/img/Group 115.png";
 
 const AddUserPage = (props) => {
   const [loading, setLoading] = useState(false);
-  const [category, setCategory] = useState("header");
-  const [data, setData] = useState([]);
+  const [category, setCategory] = useState("about-us");
+  const [dataBanner, setDataBanner] = useState([]);
   const [imgUrl, setImgUrl] = useState([]);
   const [bgImgDownload, setBgImgDownload] = useState(downloadIcon);
 
@@ -18,7 +18,7 @@ const AddUserPage = (props) => {
     getData(`banner/${category}`)
       .then((res) => {
         setLoading(true);
-        setData(res);
+        setDataBanner(res);
         setImgUrl(res.img);
         setBgImgDownload(res.img);
       })
@@ -37,14 +37,11 @@ const AddUserPage = (props) => {
     });
 
     // data.role = 5;
-    putData(`banner`, data)
+    putData(`banner/?bannerId=${dataBanner.id}`, data)
       .then((response) => {
         console.log("response", response);
         if (response.id) {
           Alert("Данные баннера обновлен");
-          setTimeout(() => props.history.push(`/products/`), 1000);
-        } else {
-          Alert(response.Message, "error");
         }
       })
       .catch(() =>
@@ -65,14 +62,14 @@ const AddUserPage = (props) => {
       }
     });
   };
-  console.log("category", data);
+  console.log("dataBanner", dataBanner);
   return (
     <div className="wrapper">
       <Title>Изменение данных баннаре </Title>
       {loading ? (
         <div className="d-flex">
           <form className="input-blocks pt-4" onSubmit={postUserData}>
-            <div className="form-group">
+            {/* <div className="form-group">
               <label htmlFor="categoryId">Категория</label>
               <br />
               <select
@@ -89,7 +86,7 @@ const AddUserPage = (props) => {
                 <option value={"about-us"}>О нас</option>
                 <option value={"header"}>Хеадер</option>
               </select>
-            </div>
+            </div> */}
             <div className="form-group">
               <label htmlFor="title">Названия</label>
               <input
@@ -97,7 +94,7 @@ const AddUserPage = (props) => {
                 name="title"
                 className="form-control"
                 id="title"
-                defaultValue={data.title}
+                defaultValue={dataBanner.title}
                 required
               />
             </div>
@@ -108,7 +105,7 @@ const AddUserPage = (props) => {
                 name="text"
                 className="form-control"
                 id="text"
-                defaultValue={data.text}
+                defaultValue={dataBanner.text}
                 required
               ></textarea>
             </div>
