@@ -14,7 +14,7 @@ const ProductsPage = () => {
   const [page, setPage] = useState(1);
   const [category, setCategory] = useState("false");
 
-  let countArticle = 20;
+  let countArticle = 12;
 
   useEffect(() => {
     setLoading(false);
@@ -23,7 +23,7 @@ const ProductsPage = () => {
     });
     let pageNumber = page - 1;
     getData(
-      `products/?page=${pageNumber}${
+      `products/?page=${pageNumber}&&size=${countArticle}${
         category !== "false" ? `&&categoryId=${category}` : ""
       }`
       //   /?${department !== "false" ? `department=${department}` : ""}${
@@ -61,7 +61,7 @@ const ProductsPage = () => {
           </select>
         </div>
 
-        <Link to={`/add-project/`} className="add-btn">
+        <Link to={`/add-product/`} className="add-btn">
           Создать
         </Link>
       </div>
