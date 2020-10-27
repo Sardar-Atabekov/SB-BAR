@@ -40,7 +40,10 @@ const NavBar = () => {
         Заказы
       </Link>
       <Link to={"/banners/"} className="categories">
-        Баннеры
+        О нас
+      </Link>
+      <Link to={"/header/"} className="categories">
+        Header
       </Link>
       <div className="categories" onClick={confirmMessage}>
         Выйти

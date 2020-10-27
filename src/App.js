@@ -12,6 +12,7 @@ import ProductsPage from "./pages/products/products";
 import CategoryPage from "./pages/category/category";
 import OrdersPage from "./pages/orders-page/order";
 import BannerPage from "./pages/banner-page/banner";
+import HeaderPage from "./pages/header/header";
 function App() {
   return (
     <BrowserRouter>
@@ -32,6 +33,7 @@ function App() {
             <Route path="/category/" exact component={CategoryPage} />
             <Route path="/add-user/" exact component={AddUserPage} />
             <Route path="/banners/" exact component={BannerPage} />
+            <Route path="/header/" exact component={HeaderPage} />
             <Route path="/add-product/" exact component={AddProductPage} />
             <Route path="/edit-user/:id/" exact component={EditUserPage} />
         

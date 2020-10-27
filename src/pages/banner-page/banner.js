@@ -65,7 +65,7 @@ const AddUserPage = (props) => {
   console.log("dataBanner", dataBanner);
   return (
     <div className="wrapper">
-      <Title>Изменение данных баннаре </Title>
+      <Title>Изменение данных </Title>
       {loading ? (
         <div className="d-flex">
           <form className="input-blocks pt-4" onSubmit={postUserData}>
