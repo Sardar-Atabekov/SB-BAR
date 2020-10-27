@@ -27,7 +27,7 @@ const ProductsPage = () => {
   console.log("data", data);
   return (
     <div className="wrapper productsPage">
-      <div>
+      <div className="mt-5 mb-3 text-right">
         <Link to={`/add-product/`} className="add-btn">
           Создать
         </Link>

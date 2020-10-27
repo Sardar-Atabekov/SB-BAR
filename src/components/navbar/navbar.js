@@ -39,6 +39,9 @@ const NavBar = () => {
       <Link to={"/orders/"} className="categories">
         Заказы
       </Link>
+      <Link to={"/banners/"} className="categories">
+        Баннеры
+      </Link>
       <div className="categories" onClick={confirmMessage}>
         Выйти
       </div>
