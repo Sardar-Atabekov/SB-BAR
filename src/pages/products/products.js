@@ -13,13 +13,14 @@ const ProductsPage = () => {
   const [total, setTotal] = useState("");
   const [page, setPage] = useState(1);
   const [category, setCategory] = useState("false");
-
+  const [categoryLoading, setCategoryLoading] = useState(false);
   let countArticle = 12;
 
   useEffect(() => {
     setLoading(false);
     getData(`category/`).then((res) => {
       setDataCategory(res);
+      setCategoryLoading(true);
     });
     let pageNumber = page - 1;
     getData(
@@ -65,7 +66,7 @@ const ProductsPage = () => {
           Создать
         </Link>
       </div>
-      {loading ? (
+      {loading && categoryLoading ? (
         <>
           <Table striped className={"mb-5 table-3 tables mt-5"}>
             <thead>

@@ -6,7 +6,11 @@ import { devAPI as API } from "./../constants/API";
 let token;
 if (localStorage.getItem("token")) {
   token = JSON.parse(localStorage.getItem("token")).token;
+} else if (window.location.pathname != "/") {
+  window.location.href = "/";
 }
+
+console.log("window.location", window.location);
 
 const headers = {
   Accept: "application/json",

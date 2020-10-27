@@ -81,21 +81,7 @@
 }
 
 .sing-in {
-    color: var(--mainColor);
+    color: #000;
     /* text-align: cen; */
 }
 
-
-.loginImg {
-    background: var(--mainColor);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
-
-.loginImg img {
-    width: 65%;
-    height: 56%;
-    margin-top: 24%;
-}
