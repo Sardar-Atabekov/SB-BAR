@@ -7,10 +7,14 @@ import { Table } from "reactstrap";
 import "./products.css";
 const ProductsPage = () => {
   const [data, setData] = useState([]);
+  const [dataCategory, setDataCategory] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(false);
+    getData(`category/`).then((res) => {
+      setDataCategory(res);
+    });
     getData(
       `products/`
       //   /?${department !== "false" ? `department=${department}` : ""}${
@@ -24,7 +28,7 @@ const ProductsPage = () => {
     });
   }, []);
 
-  console.log("data", data);
+  console.log("data", dataCategory);
   return (
     <div className="wrapper productsPage">
       <div className="mt-5 mb-3 text-right">
@@ -41,6 +45,9 @@ const ProductsPage = () => {
                   <span>Имя</span>{" "}
                 </th>
                 <th className={"thead-item"}>
+                  <span>Категория</span>{" "}
+                </th>
+                <th className={"thead-item"}>
                   <span>Старая цена </span>
                 </th>
                 <th className={"thead-item"}>
@@ -54,6 +61,13 @@ const ProductsPage = () => {
                   <tr key={user.id}>
                     <td data-th="Ф.И.О" className={"tbody-item table-Username"}>
                       <Link to={`/product-edit/${user.id}/`}>{user.title}</Link>
+                    </td>
+                    <td data-th="Категория" className={"tbody-item"}>
+                      {
+                        dataCategory.filter(
+                          (item) => item.id == [user.categoryId]
+                        )[0].title
+                      }
                     </td>
                     <td data-th="Категория" className={"tbody-item"}>
                       {user.oldPrice}
