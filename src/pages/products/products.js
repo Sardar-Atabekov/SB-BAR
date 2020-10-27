@@ -11,7 +11,7 @@ const ProductsPage = () => {
   const [dataCategory, setDataCategory] = useState([]);
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState("");
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [category, setCategory] = useState("false");
 
   let countArticle = 20;
@@ -21,8 +21,9 @@ const ProductsPage = () => {
     getData(`category/`).then((res) => {
       setDataCategory(res);
     });
+    let pageNumber = page - 1;
     getData(
-      `products/?page=${page}${
+      `products/?page=${pageNumber}${
         category !== "false" ? `&&categoryId=${category}` : ""
       }`
       //   /?${department !== "false" ? `department=${department}` : ""}${
@@ -47,7 +48,7 @@ const ProductsPage = () => {
             className="form-control"
             defaultValue={category}
             onChange={(e) => {
-              setPage(0);
+              setPage(1);
               setCategory(e.target.value);
             }}
           >
