@@ -2,29 +2,30 @@ import React, { useState, useEffect } from "react";
 import Title from "../../components/title/title";
 import Loading from "../../components/loading/loading";
 import Alert, { confirmAlert } from "../../functions/alert";
-import { getData, postData, postFilesData } from "../../functions/requests";
+import { getData, postFilesData, putData } from "../../functions/requests";
+import DeleteBtn from "./../../components/buttons/deleteBtn";
 import downloadIcon from "./../../assets/img/Group 115.png";
 
 const AddUserPage = (props) => {
-  const [imgUrl, setImgUrl] = useState("");
   const [loading, setLoading] = useState(false);
-  const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState("header");
+  const [data, setData] = useState([]);
+  const [imgUrl, setImgUrl] = useState([]);
   const [bgImgDownload, setBgImgDownload] = useState(downloadIcon);
 
   useEffect(() => {
     setLoading(false);
-    getData(
-      `category/`
-      //   /?${department !== "false" ? `department=${department}` : ""}${
-      //     role !== "false" ? `&&status=${role}` : ""
-      //   }${status !== "false" ? `&&user__is_active=${status}` : ""}${
-      //     searchText && `&&search=${searchText}`
-      //   }&&page_size=9`
-    ).then((res) => {
-      setCategory(res);
-      setLoading(true);
-    });
-  }, []);
+    getData(`banner/${category}`)
+      .then((res) => {
+        setLoading(true);
+        setData(res);
+        setImgUrl(res.img);
+        setBgImgDownload(res.img);
+      })
+      .catch(() =>
+        confirmAlert("Ошибка сервера. Напишите нам, мы всё починим.")
+      );
+  }, [category]);
 
   const postUserData = (e) => {
     e.preventDefault();
@@ -36,11 +37,11 @@ const AddUserPage = (props) => {
     });
 
     // data.role = 5;
-    postData("products/", data)
+    putData(`banner`, data)
       .then((response) => {
         console.log("response", response);
         if (response.id) {
-          Alert("Продукт добавлен");
+          Alert("Данные баннера обновлен");
           setTimeout(() => props.history.push(`/products/`), 1000);
         } else {
           Alert(response.Message, "error");
@@ -64,24 +65,13 @@ const AddUserPage = (props) => {
       }
     });
   };
-
-  console.log("category", category);
+  console.log("category", data);
   return (
     <div className="wrapper">
-      <Title>Создания продукта </Title>
+      <Title>Изменение данных баннаре </Title>
       {loading ? (
         <div className="d-flex">
           <form className="input-blocks pt-4" onSubmit={postUserData}>
-            <div className="form-group">
-              <label htmlFor="title">Названия</label>
-              <input
-                type="title"
-                name="title"
-                className="form-control"
-                id="title"
-                required
-              />
-            </div>
             <div className="form-group">
               <label htmlFor="categoryId">Категория</label>
               <br />
@@ -91,41 +81,34 @@ const AddUserPage = (props) => {
                 name="categoryId"
                 defaultValue=""
                 required
+                onChange={(e) => setCategory(e.target.value)}
               >
                 <option value="" disabled>
-                  Выберите категорию
+                  Выберите баннера
                 </option>
-                {category.map((department) => (
-                  <option key={department.id} value={department.id}>
-                    {department.title}
-                  </option>
-                ))}
+                <option value={"about-us"}>О нас</option>
+                <option value={"header"}>Хеадер</option>
               </select>
             </div>
             <div className="form-group">
-              <label htmlFor="price">Цена</label>
+              <label htmlFor="title">Названия</label>
               <input
-                name="price"
+                type="title"
+                name="title"
                 className="form-control"
-                id="price"
+                id="title"
+                defaultValue={data.title}
                 required
               />
             </div>
+
             <div className="form-group">
-              <label htmlFor="oldPrice">Старая цена</label>
-              <input
-                name="oldPrice"
-                className="form-control"
-                id="oldPrice"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="description">Описания</label>
+              <label htmlFor="text">Текст</label>
               <textarea
-                name="description"
+                name="text"
                 className="form-control"
-                id="description"
+                id="text"
+                defaultValue={data.text}
                 required
               ></textarea>
             </div>
@@ -137,7 +120,9 @@ const AddUserPage = (props) => {
                 id="img"
                 required
                 value={imgUrl}
-                onChange={(e) => setImgUrl(e.target.value)}
+                onChange={(e) => {
+                  setImgUrl(e.target.value);
+                }}
                 //   defaultValue={imgUrl}
               />
               <input
@@ -153,6 +138,16 @@ const AddUserPage = (props) => {
                 <span>Загрузить картинку</span>
               </label>
             </div>
+            {/* <div className="text-left w-50">
+              <DeleteBtn
+                title={`Вы уверены что хотите удалить продукта ${data.title}?`}
+                subTitle="Продукт удален"
+                url={`products/?productId=${data.id}`}
+                // data={userData.id}
+                toUrl={"/products/"}
+                props={props}
+              />
+            </div> */}
 
             <div className="text-right">
               <input

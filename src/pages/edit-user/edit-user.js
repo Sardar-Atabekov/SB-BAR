@@ -74,7 +74,7 @@ const EditUserPage = (props) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="lastName">Имя</label>
+                <label htmlFor="lastName">Фамилия</label>
                 <input
                   name="lastName"
                   className="form-control"

@@ -12,3 +12,28 @@
 .study-plans {
     min-height: 250px;
 }
+
+.add-btn {
+    background: #32b482;
+    padding: 8px 40px;
+    margin: 10px 0 25px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .18);
+    border-radius: 5px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.add-btn:hover {
+    color: #fff;
+}
+
+.download-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0,0,0,.5);
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 289px;
+    padding: 8px;
+}
