@@ -32,7 +32,7 @@ function confirmAlert(title) {
   }).then((result) => {
     if (result.value) {
       setTimeout(() => {
-        window.location.href = "https://neobis.kg/";
+        window.location.href = "https://sbbar.kg/contacts";
       }, 1000);
     }
   });

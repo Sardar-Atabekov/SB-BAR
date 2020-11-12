@@ -3,7 +3,6 @@ import Title from "../../components/title/title";
 import Loading from "../../components/loading/loading";
 import Alert, { confirmAlert } from "../../functions/alert";
 import { getData, postFilesData, putData } from "../../functions/requests";
-import DeleteBtn from "./../../components/buttons/deleteBtn";
 import downloadIcon from "./../../assets/img/Group 115.png";
 
 const AddUserPage = (props) => {

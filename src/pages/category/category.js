@@ -6,7 +6,6 @@ import {
   putData,
 } from "../../functions/requests";
 import Loading from "./../../components/loading/loading";
-import { Link } from "react-router-dom";
 import "./category.css";
 const ProductsPage = () => {
   const [data, setData] = useState([]);

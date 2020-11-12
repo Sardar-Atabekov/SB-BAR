@@ -1,5 +1,4 @@
 import React from "react";
-import UserPage from "./pages/user/user";
 import NavBar from "./components/navbar/navbar";
 import UsersPage from "./pages/users/users-page";
 import AddUserPage from "./pages/add-user/add-user";
@@ -23,7 +22,6 @@ function App() {
             <Route path="/" exact component={LoginPage} />
             <Route path="/users/" exact component={UsersPage} />
             <Route path="/orders/" exact component={OrdersPage} />
-            <Route path="/user/:id/" exact component={UserPage} />
             <Route
               path="/product-edit/:id/"
               exact
